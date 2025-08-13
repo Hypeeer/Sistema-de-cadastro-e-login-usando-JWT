@@ -1,0 +1,27 @@
+{
+  "name": "sistema-de-cadastro-e-login-usando-jwt",
+  "version": "1.0.0",
+  "description": "Desenvolva uma API REST que permita o cadastro de usuários, login e autenticação usando JSON Web Tokens (JWT).",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hypeeer/Sistema-de-cadastro-e-login-usando-JWT.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hypeeer/Sistema-de-cadastro-e-login-usando-JWT/issues"
+  },
+  "homepage": "https://github.com/Hypeeer/Sistema-de-cadastro-e-login-usando-JWT#readme",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10"
+  }
+}
