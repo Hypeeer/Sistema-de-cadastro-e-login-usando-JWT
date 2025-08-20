@@ -15,6 +15,6 @@ export const getUsers = () => {
     console.log(`searching the database`);
     setTimeout(() => {
       resolve(users);
-    }, 5000);
+    }, 1000);
   });
 };

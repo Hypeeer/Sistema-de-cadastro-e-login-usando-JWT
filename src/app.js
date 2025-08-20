@@ -5,7 +5,7 @@ const app = express();
 const port = 8080;
 
 app.use(express.json());
-app.use('/login', router); //rota principal
+app.use('/', router); //rota principal
 
 app.listen(port, () => {
   const date = new Date();
