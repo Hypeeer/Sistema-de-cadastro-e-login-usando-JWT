@@ -1,48 +1,46 @@
 import bycrypt from 'bcrypt';
-import { saveUser, getUsers } from '../Models/dbTest.js';
-import { passwordValidator, emailValidator } from '../Service/userService.js';
+import { saveUser, getUsers } from '../Models/userModel.js';
+import { passwordValidator, emailValidator, nameValidator } from '../Service/userService.js';
 
-let id = 0; //Cria id auto incrementavel para cada usuario criado
-// Cria usuario via body
+// Registra usuario e salva no banco de dados
 export const postUserRegistration = async (req, res) => {
-  //try/catch para tratamento de exeçoes
+  // try/catch para tratamento de exeçoes
   try {
-    const { email, password } = req.body;
-    // Verifica se valores estão certos
-    if (!email || !password) {
-      return res.status(400).json({
-        sucesso: false,
-        mensagem: `Email ou senha vazio`,
-      });
-    }
-    // spread operator para juntar erros da verificação
-    const error = [...emailValidator(email), ...passwordValidator(password)];
+    const { name, email, password } = req.body;
 
-    if (error.length) {
+    const nameError = nameValidator(name);
+    const emailError = emailValidator(email);
+    const passwordError = passwordValidator(password);
+
+    // Tranforma a saida de erro em um obj, onde fica claro o erro e qual campo pertece esse erro
+    const errorValidator = [
+      ...nameError.map((msg) => ({ filde: 'name', message: msg })),
+      ...emailError.map((msg) => ({ filde: 'E-mail', message: msg })),
+      ...passwordError.map((msg) => ({ filde: 'Password', message: msg })),
+    ];
+
+    if (errorValidator.length) {
       return res.status(400).json({
         sucesso: false,
-        error: error,
+        error: errorValidator,
       });
     }
 
     const passwordHash = await bycrypt.hash(password, 6); // Trasforma a senha do usuario em um hash
 
-    id++; //incrementa a cada novo usuario
-
-    const creatingNewUser = { id, email, passwordHash };
-    await saveUser(creatingNewUser); //Salva no "db" cada usuario criado
+    const id = await saveUser(name, email, passwordHash);
 
     return res.status(200).json({
       sucesso: true,
       mensagem: `User created`,
-      creatingNewUser,
+      user: { id, name, email },
     });
   } catch (error) {
-    return res.status(500).json({ error: `Erro no servidor`, mensagem: error.mensagem });
+    console.error(error);
+    return res.status(500).json({ error: 'Server error', mensagem: error.message });
   }
 };
 
-// Lista todos usuarios via "db"
 export const getListUser = async (req, res) => {
   const listUsers = await getUsers();
   res.status(201).json(listUsers);
