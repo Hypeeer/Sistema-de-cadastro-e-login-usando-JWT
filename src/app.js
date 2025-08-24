@@ -5,7 +5,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(express.json());
-app.use('/', router); //rota principal
+app.use('/api', router); //rota principal
 
 app.listen(process.env.PORT, () => {
   const date = new Date();

@@ -1,6 +1,6 @@
 import bycrypt from 'bcrypt';
-import { saveUser, getUsers } from '../Models/userModel.js';
-import { passwordValidator, emailValidator, nameValidator } from '../Service/userService.js';
+import { saveUser, getAllUsers } from '../../Models/userModel.js';
+import { passwordValidator, emailValidator, nameValidator } from '../../Service/userService.js';
 
 // Registra usuario e salva no banco de dados
 export const postUserRegistration = async (req, res) => {
@@ -42,6 +42,6 @@ export const postUserRegistration = async (req, res) => {
 };
 
 export const getListUser = async (req, res) => {
-  const listUsers = await getUsers();
+  const listUsers = await getAllUsers();
   res.status(201).json(listUsers);
 };
