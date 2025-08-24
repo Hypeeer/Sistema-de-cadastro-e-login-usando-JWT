@@ -7,9 +7,9 @@ O objetivo deste projeto é fornecer um fluxo seguro de cadastro e autenticaçã
 
 ## Índice
 
-1. [Visão Geral](#-visão-geral)
+1. [Visão Geral](#visão-geral)
 2. [Qual problema a API resolve?](#qual-problema-a-api-resolve)
-3. [Funcionalidades](#-funcionalidades)
+3. [Funcionalidades](#funcionalidades)
 4. [Tecnologias](#tecnologias)
 5. [Instalação](#instalação)
 6. [Endpoints](#endpoints)
