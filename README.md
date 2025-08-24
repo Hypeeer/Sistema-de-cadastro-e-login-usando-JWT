@@ -28,7 +28,7 @@ Este projeto implementa um sistema de **cadastro e login de usuários**, utiliza
 - [x] Validação de senha forte e formato de e-mail
 - [x] Criptografia de senha com **bcrypt**
 - [x] Persistência de dados no **MySQL**
-- [ ] Login com geração de **JWT**
+- [x] Login com geração de **JWT**
 - [ ] Middleware de autenticação
 - [ ] Rotas protegidas por token
 
