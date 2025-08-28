@@ -10,7 +10,7 @@ export const saveUser = async (name, email, passwordHash) => {
 };
 
 export const getUsers = async (email) => {
-  const { rows } = await pool.query('SELECT senha FROM usuarios WHERE email = ?', [email]);
+  const [rows] = await pool.query('SELECT senha FROM usuarios WHERE email = ?', [email]);
   return rows;
 };
 

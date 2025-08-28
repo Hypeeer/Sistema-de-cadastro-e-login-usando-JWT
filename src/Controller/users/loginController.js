@@ -15,7 +15,7 @@ export const postLoginAuthorization = async (req, res) => {
 
     const identifiedUser = await getUsers(email);
 
-    if (identifiedUser.length === 0) {
+    if (!identifiedUser || identifiedUser.length === 0) {
       return res.status(400).json({
         success: false,
         message: 'Usuario não encontrado!',
