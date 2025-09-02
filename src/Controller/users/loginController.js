@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { getUsers } from '../../Models/userModel.js';
+import { getUsers, saveRefreshToken } from '../../Models/userModel.js';
 
 export const postLoginAuthorization = async (req, res) => {
   try {
@@ -26,11 +26,16 @@ export const postLoginAuthorization = async (req, res) => {
     const verify = await bcrypt.compare(password, hashPassword);
 
     if (verify === true) {
-      const token = jwt.sign({ id: identifiedUser[0].id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+      const accessToken = jwt.sign({ id: identifiedUser[0].id }, process.env.JWT_ACCESS_TOKEN, { expiresIn: '15m' });
+
+      const refreshToken = jwt.sign({ id: identifiedUser[0].id }, process.env.JWT_REFRESH_TOKEN, { expiresIn: '1d' });
+      // Salva refreshToken junto ao id do usuario
+      await saveRefreshToken(refreshToken, identifiedUser[0].id);
+
       return res.status(200).json({
         success: true,
         message: 'Login realizado com sucesso!',
-        token,
+        accessToken,
       });
     } else if (verify === false) {
       return res.status(400).json({
