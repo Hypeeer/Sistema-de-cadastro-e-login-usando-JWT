@@ -9,7 +9,7 @@ export const postLoginAuthorization = async (req, res) => {
     if (!email || !password) {
       return res.status(400).json({
         success: false,
-        message: 'Campo e-mail ou senha invalidos!',
+        message: 'Invalid e-mail or password field!',
       });
     }
 
@@ -18,7 +18,7 @@ export const postLoginAuthorization = async (req, res) => {
     if (!identifiedUser || identifiedUser.length === 0) {
       return res.status(400).json({
         success: false,
-        message: 'Usuario não encontrado!',
+        message: 'User not found!',
       });
     }
 
@@ -34,13 +34,13 @@ export const postLoginAuthorization = async (req, res) => {
 
       return res.status(200).json({
         success: true,
-        message: 'Login realizado com sucesso!',
+        message: 'Login successful!',
         accessToken,
       });
     } else if (verify === false) {
       return res.status(400).json({
         success: false,
-        message: 'Senha incorreta!',
+        message: 'Incorrect password!',
       });
     }
   } catch (error) {

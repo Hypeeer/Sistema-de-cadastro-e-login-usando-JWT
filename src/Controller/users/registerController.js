@@ -1,4 +1,4 @@
-import bycrypt from 'bcrypt';
+import bcrypt from 'bcrypt';
 import { saveUser } from '../../Models/userModel.js';
 import { passwordValidator, emailValidator, nameValidator } from '../../Service/userService.js';
 
@@ -26,7 +26,7 @@ export const postUserRegistration = async (req, res) => {
       });
     }
 
-    const passwordHash = await bycrypt.hash(password, 6); // Trasforma a senha do usuario em um hash
+    const passwordHash = await bcrypt.hash(password, 6); // Trasforma a senha do usuario em um hash
 
     const id = await saveUser(name, email, passwordHash);
 
