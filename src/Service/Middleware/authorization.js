@@ -7,12 +7,12 @@ export const authorization = (req, res, next) => {
   if (!token) {
     return res.status(401).json({
       succes: false,
-      message: 'Acesso negado!',
+      message: 'Access denied!',
     });
   }
 
   try {
-    const secretKey = process.env.JWT_SECRET;
+    const secretKey = process.env.JWT_ACCESS_TOKEN;
 
     const user = jwt.verify(token, secretKey);
 
@@ -22,7 +22,7 @@ export const authorization = (req, res, next) => {
   } catch (error) {
     return res.status(401).json({
       success: false,
-      error: 'Token Invalido!',
+      error: 'Invalid Token!',
     });
   }
 };
