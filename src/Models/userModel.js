@@ -28,3 +28,8 @@ export const getUserByRefreshToken = async (refreshToken) => {
   const [rows] = await pool.query('SELECT * FROM usuarios WHERE refreshToken = ?', [refreshToken]);
   return rows;
 };
+
+export const postDeleteRefreshToken = async (refreshToken) => {
+  const [rows] = await pool.query('UPDATE usuarios SET refreshToken = NULL WHERE refreshToken = ?', [refreshToken]);
+  return rows;
+};
