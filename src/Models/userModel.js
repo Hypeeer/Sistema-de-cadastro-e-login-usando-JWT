@@ -23,3 +23,8 @@ export const getAllUsers = async () => {
   const [rows] = await pool.query('SELECT id, nome, email, data_criacao FROM usuarios');
   return rows;
 };
+
+export const getUserByRefreshToken = async (refreshToken) => {
+  const [rows] = await pool.query('SELECT * FROM usuarios WHERE refreshToken = ?', [refreshToken]);
+  return rows;
+};

@@ -26,7 +26,7 @@ export const postLoginAuthorization = async (req, res) => {
     const verify = await bcrypt.compare(password, hashPassword);
 
     if (verify === true) {
-      const accessToken = jwt.sign({ id: identifiedUser[0].id }, process.env.JWT_ACCESS_TOKEN, { expiresIn: '15m' });
+      const accessToken = jwt.sign({ id: identifiedUser[0].id }, process.env.JWT_ACCESS_TOKEN, { expiresIn: '10m' });
 
       const refreshToken = jwt.sign({ id: identifiedUser[0].id }, process.env.JWT_REFRESH_TOKEN, { expiresIn: '1d' });
       // Salva refreshToken junto ao id do usuario
