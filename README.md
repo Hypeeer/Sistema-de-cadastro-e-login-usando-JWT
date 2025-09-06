@@ -107,17 +107,13 @@ npm start
 
 ```json
 {
-  {
-    {
-    "sucesso": true,
-    "mensagem": "User created",
-    "user": {
-        "id": 1,
-        "name": "João",
-        "email": "joao@hotmail.com"
-    }
-}
-}
+  "sucesso": true,
+  "mensagem": "User created",
+  "user": {
+    "id": 1,
+    "name": "João",
+    "email": "joao@hotmail.com"
+  }
 }
 ```
 
@@ -138,11 +134,9 @@ npm start
 
 ```json
 {
-  {
-    "success": true,
-    "message": "Login successful!",
-    "accessToken": "jwt_token_aqui"
-}
+  "success": true,
+  "message": "Login successful!",
+  "accessToken": "jwt_token_aqui"
 }
 ```
 
@@ -155,14 +149,12 @@ npm start
 **Resposta de sucesso:**
 
 ```json
-[
-  {
-    "id": 29,
-    "nome": "João",
-    "email": "joao@hotmail.com",
-    "data_criacao": "2025-09-06T18:55:13.000Z"
-  }
-]
+{
+  "id": 29,
+  "nome": "João",
+  "email": "joao@hotmail.com",
+  "data_criacao": "2025-09-06T18:55:13.000Z"
+}
 ```
 
 ## RefreshToken
