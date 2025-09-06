@@ -11,6 +11,7 @@ export const postLogout = async (req, res) => {
   }
 
   try {
+    //Verifica se token exite no banco de dados
     const verifyRefresh = await getUserByRefreshToken(accessToken);
 
     if (!verifyRefresh || verifyRefresh.length === 0) {
@@ -19,8 +20,8 @@ export const postLogout = async (req, res) => {
         message: 'Invalid token!',
       });
     }
-
-    const user = await postDeleteRefreshToken(accessToken);
+    //Apaga o accessToken do banco e realiza o logout
+    await postDeleteRefreshToken(accessToken);
 
     return res.status(200).json({
       success: true,

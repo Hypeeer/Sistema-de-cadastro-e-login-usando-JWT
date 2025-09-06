@@ -22,7 +22,7 @@ export const postRefreshToken = async (req, res) => {
     }
 
     const decode = jwt.verify(refreshToken, process.env.JWT_REFRESH_TOKEN);
-
+    //Cria accessToken com os dados do refreshToken existente
     const accessToken = jwt.sign({ id: decode.id }, process.env.JWT_ACCESS_TOKEN, { expiresIn: '10m' });
 
     res.json(accessToken);
