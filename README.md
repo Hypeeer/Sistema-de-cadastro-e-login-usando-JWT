@@ -91,7 +91,7 @@ npm start
 
 ### Criar usuário
 
-**POST** `/api/users/register`
+**POST** `/api/register`
 
 **Body (JSON):**
 
@@ -103,9 +103,27 @@ npm start
 }
 ```
 
+**Resposta de sucesso:**
+
+```json
+{
+  {
+    {
+    "sucesso": true,
+    "mensagem": "User created",
+    "user": {
+        "id": 1,
+        "name": "João",
+        "email": "joao@hotmail.com"
+    }
+}
+}
+}
+```
+
 ### Login
 
-**POST** `/api/users/login`
+**POST** `/api/auth/login`
 
 **Body (JSON):**
 
@@ -120,6 +138,71 @@ npm start
 
 ```json
 {
-  "token": "jwt_token_aqui"
+  {
+    "success": true,
+    "message": "Login successful!",
+    "accessToken": "jwt_token_aqui"
+}
+}
+```
+
+## Privite Router
+
+**GET** `/api/auth/users`
+
+**[Authorization Bearer] Token**
+
+**Resposta de sucesso:**
+
+```json
+[
+  {
+    "id": 29,
+    "nome": "João",
+    "email": "joao@hotmail.com",
+    "data_criacao": "2025-09-06T18:55:13.000Z"
+  }
+]
+```
+
+## RefreshToken
+
+**POST** `/api/auth/refresh`
+
+**Body (JSON)**
+
+```json
+{
+  "refreshToken": "jwt_token_aqui"
+}
+```
+
+**Resposta de sucesso:**
+
+```json
+{
+  "success": true,
+  "newAccessToken": "jwt_token_aqui"
+}
+```
+
+## Logout
+
+**POST** `/api/auth/logout`
+
+**Body (JSON)**
+
+```json
+{
+  "refreshToken": "jwt_token_aqui"
+}
+```
+
+**Resposta de sucesso:**
+
+```json
+{
+  "success": true,
+  "mensagem": "Logout successful!"
 }
 ```
