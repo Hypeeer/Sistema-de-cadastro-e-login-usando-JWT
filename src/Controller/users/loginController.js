@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { getUsers, saveRefreshToken } from '../../Models/userModel.js';
+import { getUsers, postSaveRefreshToken } from '../../Models/userModel.js';
 
 export const postLoginAuthorization = async (req, res) => {
   try {
@@ -30,7 +30,7 @@ export const postLoginAuthorization = async (req, res) => {
 
       const refreshToken = jwt.sign({ id: identifiedUser[0].id }, process.env.JWT_REFRESH_TOKEN, { expiresIn: '1d' });
       // Salva refreshToken junto ao id do usuario
-      await saveRefreshToken(refreshToken, identifiedUser[0].id);
+      await postSaveRefreshToken(refreshToken, identifiedUser[0].id);
 
       return res.status(200).json({
         success: true,

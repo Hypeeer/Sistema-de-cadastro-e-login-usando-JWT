@@ -1,9 +1,9 @@
 import { getUserByRefreshToken, postDeleteRefreshToken } from '../../Models/userModel.js';
 
 export const postLogout = async (req, res) => {
-  const accessToken = req.body.refreshToken;
+  const { refreshToken } = req.body;
 
-  if (!accessToken) {
+  if (!refreshToken) {
     return res.status(400).json({
       success: false,
       message: 'Invalid token!',
@@ -12,7 +12,7 @@ export const postLogout = async (req, res) => {
 
   try {
     //Verifica se token exite no banco de dados
-    const verifyRefresh = await getUserByRefreshToken(accessToken);
+    const verifyRefresh = await getUserByRefreshToken(refreshToken);
 
     if (!verifyRefresh || verifyRefresh.length === 0) {
       return res.status(403).json({
@@ -20,10 +20,10 @@ export const postLogout = async (req, res) => {
         message: 'Invalid token!',
       });
     }
-    //Apaga o accessToken do banco e realiza o logout
-    await postDeleteRefreshToken(accessToken);
+    //Apaga o refreshToken do banco e realiza o logout
+    await postDeleteRefreshToken(refreshToken);
 
-    return res.status(200).json({
+    return res.status(201).json({
       success: true,
       mensagem: 'Logout successful!',
     });

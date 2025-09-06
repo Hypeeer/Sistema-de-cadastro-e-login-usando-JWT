@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt';
-import { saveUser } from '../../Models/userModel.js';
+import { getSaveUser } from '../../Models/userModel.js';
 import { passwordValidator, emailValidator, nameValidator } from '../../Service/userService.js';
 
 // Registra usuario e salva no banco de dados
@@ -28,9 +28,9 @@ export const postUserRegistration = async (req, res) => {
 
     const passwordHash = await bcrypt.hash(password, 6); // Trasforma a senha do usuario em um hash
 
-    const id = await saveUser(name, email, passwordHash);
+    const id = await getSaveUser(name, email, passwordHash);
 
-    return res.status(200).json({
+    return res.status(201).json({
       sucesso: true,
       mensagem: `User created`,
       user: { id, name, email },

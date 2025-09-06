@@ -1,6 +1,6 @@
 import { pool } from '../config/database.js';
 
-export const saveUser = async (name, email, passwordHash) => {
+export const getSaveUser = async (name, email, passwordHash) => {
   const [result] = await pool.query('INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)', [
     name,
     email,
@@ -9,7 +9,7 @@ export const saveUser = async (name, email, passwordHash) => {
   return result.insertId; // retorna o id gerado pelo MySQL
 };
 
-export const saveRefreshToken = async (refreshToken, userID) => {
+export const postSaveRefreshToken = async (refreshToken, userID) => {
   const [rows] = await pool.query('UPDATE usuarios SET refreshToken = ? WHERE id = ?', [refreshToken, userID]);
   return rows;
 };

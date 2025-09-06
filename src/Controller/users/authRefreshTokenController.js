@@ -25,7 +25,10 @@ export const postRefreshToken = async (req, res) => {
     //Cria accessToken com os dados do refreshToken existente
     const accessToken = jwt.sign({ id: decode.id }, process.env.JWT_ACCESS_TOKEN, { expiresIn: '10m' });
 
-    res.json(accessToken);
+    res.status(201).json({
+      success: true,
+      newAccessToken: accessToken,
+    });
   } catch (err) {
     if (err.name === 'TokenExpiredError') {
       return res.status(401).json({
