@@ -142,19 +142,27 @@ npm start
 
 ## Privite Router
 
-**GET** `/api/auth/users`
+**GET** `/api/auth/profile`
 
 **[Authorization Bearer] Token**
 
 **Resposta de sucesso:**
 
 ```json
-{
-  "id": 29,
-  "nome": "João",
-  "email": "joao@hotmail.com",
-  "data_criacao": "2025-09-06T18:55:13.000Z"
-}
+[
+  {
+    "id": 1,
+    "nome": "João",
+    "email": "joao@hotmail.com",
+    "data_criacao": "2025-09-06T18:55:13.000Z"
+  },
+  {
+    "id": 2,
+    "nome": "Maria",
+    "email": "maria@hotmail.com",
+    "data_criacao": "2023-30-06T20:40:01.000Z"
+  }
+]
 ```
 
 ## RefreshToken
