@@ -31,7 +31,7 @@ Este projeto implementa um sistema de **cadastro e login de usuários**, utiliza
 - [x] Login com geração de **JWT**
 - [x] Middleware de autenticação
 - [x] Rotas protegidas por token
-- [ ] Rota de logout **remover/invalidar tokens**
+- [x] Rota de logout **remover/invalidar tokens**
 
 ---
 
