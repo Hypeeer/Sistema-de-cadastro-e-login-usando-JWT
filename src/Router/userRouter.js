@@ -12,6 +12,6 @@ router.post('/register', postUserRegistration);
 router.post('/auth/login', postLoginAuthorization);
 router.post('/auth/refresh', postRefreshToken);
 router.post('/auth/logout', postLogout);
-router.get('/auth/users', authorization, getListUser);
+router.get('/auth/profile', authorization, getListUser);
 
 export default router;
