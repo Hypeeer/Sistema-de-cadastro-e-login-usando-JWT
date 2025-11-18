@@ -39,7 +39,7 @@ export const emailValidator = (email) => {
   }
 
   if (email.length > 254) {
-    error.push('E-mail muito longo (máximo de 254 caracteres)!');
+    error.push('This email is too long (maximum 254 characters)!');
   }
 
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
@@ -52,13 +52,13 @@ export const emailValidator = (email) => {
 export const nameValidator = (name) => {
   const error = [];
 
-  if (!name || name.trim() === ' ') {
-    error.push('Campo Name vazio!');
+  if (!name || name.trim() === '') {
+    error.push('Name field is empty!');
     return error;
   }
 
   if (name.length < 3 || name.length > 50) {
-    error.push('The name must be between 3 and 50 characters long.');
+    error.push('The name must be between 3 and 50 characters long!');
   }
 
   return error;
