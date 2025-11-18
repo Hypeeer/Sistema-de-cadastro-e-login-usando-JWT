@@ -1,7 +1,7 @@
 import mysql from 'mysql2/promise';
 import dotenv from 'dotenv';
 dotenv.config();
-// Configuração de conexão define limte e quantidades de conexoes.
+// Configuração de conexão define limite e quantidades de conexoes.
 export const pool = mysql.createPool({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
