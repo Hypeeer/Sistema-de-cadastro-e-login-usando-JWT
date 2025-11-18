@@ -1,0 +1,7 @@
+{
+  "testEnvironment": "node",
+  "verbose": true,
+  "transform": {},
+  "moduleFileExtensions": ["js", "json"],
+  "roots": ["<rootDir>/src/tests"]
+}
